@@ -1,0 +1,17 @@
+# This directory will contain screenshots for the report
+# Please add the following images as described in testing_instructions.md:
+
+# 1. shell_startup.png - Shell启动界面
+# 2. builtin_commands.png - 内部命令执行
+# 3. file_operations.png - 文件操作演示
+# 4. unit_tests.png - 单元测试结果
+# 5. memory_check.png - 内存检查结果
+# 6. stress_test.png - 压力测试结果
+# 7. external_commands.png - 外部命令执行
+# 8. environment_vars.png - 环境变量测试
+# 9. build_process.png - 编译过程
+# 10. project_structure.png - 项目结构
+# 11. code_analysis.png - 代码分析
+# 12. code_coverage.png - 代码覆盖率
+# 13. startup_time.png - 启动时间测试
+# 14. command_efficiency.png - 命令执行效率
