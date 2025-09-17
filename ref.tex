@@ -1,0 +1,221 @@
+% !TeX program = xelatex
+% ----------------------------------------------------------------------
+% 1. 文档类: 直接使用ctexart, 并移除冗余的UTF8选项
+% ----------------------------------------------------------------------
+\documentclass[10pt,twoside]{ctexart}
+
+% ----------------------------------------------------------------------
+% 2. 宏包加载
+% ----------------------------------------------------------------------
+% 几何尺寸与页眉页脚
+\usepackage[top=2.5cm,bottom=2.5cm,left=2cm,right=2cm]{geometry}
+\usepackage{fancyhdr}
+
+% 图形与排版
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% 数学公式
+\usepackage{amsmath,amssymb}
+
+% 图表标题
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{subcaption}
+
+% 参考文献引用
+\usepackage{cite}
+
+% 超链接 (建议放在后面加载)
+\usepackage[hidelinks]{hyperref}
+
+% ----------------------------------------------------------------------
+% 3. 字体设置 (使用ctex的现代命令)
+% ----------------------------------------------------------------------
+\setCJKmainfont[BoldFont=Heiti SC, ItalicFont=Kaiti SC]{Songti SC}
+\setCJKsansfont{PingFang SC}
+\setCJKmonofont{STFangsong}
+
+% ----------------------------------------------------------------------
+% 4. 自定义样式与命令
+% ----------------------------------------------------------------------
+% 代码环境
+\lstset{
+    basicstyle=\small\ttfamily,
+    breaklines=true,
+    commentstyle=\color{gray},
+    keywordstyle=\color{blue},
+    language=Python,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    showstringspaces=false,
+    stringstyle=\color{red},
+    captionpos=b % 将代码标题置于底部
+}
+
+% 页眉页脚
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[CE]{\small 北~京~交~通~大~学}
+\fancyhead[CO]{\small BEIJING JIAOTONG UNIVERSITY}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{\pagestyle{fancy}}
+
+
+% 章节标题格式
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {3.5ex \@plus 1ex \@minus .2ex}% 
+  {2.3ex \@plus.2ex}%
+  {\normalfont\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+  {3.25ex\@plus 1ex \@minus .2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+% 图表标题格式
+\captionsetup{font=small,labelfont=bf}
+
+% 摘要与关键词环境
+\renewenvironment{abstract}{%
+  \noindent\textbf{摘\quad 要：}}{\par}
+\newcommand{\keywords}[1]{%
+  \noindent\textbf{关键词：}#1\par}
+
+% 自定义英文摘要环境
+\newenvironment{enabstract}{%
+  \noindent\textbf{Abstract: }}{\par}
+\newcommand{\enkeywords}[1]{%
+  \noindent\textbf{Keywords: }#1\par}
+
+% ==================== 序言结束 ====================
+
+% 标题与作者信息
+\title{%
+    {\LARGE\bfseries 在此处填写你的实验报告标题}\\[0.5cm]
+    {\large 课程名称：在此处填写课程名称}%
+}
+\author{%
+    {\large 姓名：苏长皓 \qquad 学号：23331147}\\[0.2cm]
+    {\small （北京交通大学~詹天佑学院，北京）}%
+}
+\date{{\large （实验日期：\today）}}
+
+
+\begin{document}
+
+% 标题部分
+\maketitle
+\thispagestyle{fancy}
+
+% 中文摘要
+\begin{abstract}
+[ 在此处填写中文摘要内容。简要介绍实验的背景、目的、方法、主要结果和结论。]
+\end{abstract}
+
+\keywords{关键词1；关键词2；关键词3}
+
+\vspace{0.5cm}
+
+% 英文标题和摘要
+\begin{center}
+{\large\bfseries English Title of Your Experiment Report}\\[0.3cm]
+{\normalsize NAME Pinyin}\\[0.2cm]
+{\small (School of Electronic and Information Engineering, Beijing Jiaotong University, Beijing 100044, China)}\\[0.2cm]
+{\small (Date: \today)}
+\end{center}
+
+\begin{enabstract}
+[ Type your English abstract here. It should be a concise summary of the experiment's background, objectives, methods, key findings, and conclusions. ]
+\end{enabstract}
+
+\enkeywords{Keyword1; Keyword2; Keyword3}
+
+\vspace{0.5cm}
+
+% 正文开始，使用双栏
+\begin{multicols}{2}
+\raggedcolumns
+
+\section{实验目的}
+1. [ 目的1 ]
+2. [ 目的2 ]
+3. [ 目的3 ]
+
+\section{实验原理}
+[ 在此处详细阐述实验所依据的理论基础、核心公式和工作原理。]
+
+\subsection{原理一}
+[ 对第一个核心原理进行说明。]
+
+这是一个公式示例：
+\begin{equation}
+    E = mc^2
+    \label{eq:einstein}
+\end{equation}
+如公式 \ref{eq:einstein} 所示...
+
+\subsection{原理二}
+[ 对第二个核心原理进行说明。]
+
+\section{实验内容与步骤}
+[ 在此处描述具体的实验内容、所使用的仪器设备以及详细的操作步骤。]
+
+\subsection{实验设备}
+\begin{itemize}
+    \item 设备一 (型号)
+    \item 设备二 (型号)
+\end{itemize}
+
+\subsection{实验步骤}
+1. 步骤一...
+2. 步骤二...
+3. 步骤三...
+
+\section{实验结果与分析}
+[ 在此处展示实验数据、图表、波形等，并对结果进行深入的分析和讨论。]
+
+\begin{figure}[H]
+    \centering
+    % 请将图片文件放在与.tex文件相同的目录下，或指定正确路径
+    % \includegraphics[width=\columnwidth]{your_image_file.png}
+    \caption{这是一个图片标题示例。}
+    \label{fig:example}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{这是一个表格标题示例。}
+    \label{tab:example}
+    \begin{tabular}{ccc}
+    \toprule
+    参数 A & 参数 B & 结果 C \\
+    \midrule
+    数据1 & 数据2 & 数据3 \\
+    数据4 & 数据5 & 数据6 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{结论与思考}
+[ 在此处总结实验结论，并提出实验过程中遇到的问题、改进建议或进一步的思考。这是一个引用示例 \cite{placeholder}。]
+
+\end{multicols}
+
+% 参考文献部分
+\vspace{1cm}
+\noindent\rule{\textwidth}{0.4pt}
+\begin{thebibliography}{99}
+\footnotesize
+% 请在此处添加你的参考文献
+
+\end{thebibliography}
+
+\end{document}
