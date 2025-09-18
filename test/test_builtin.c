@@ -610,8 +610,8 @@ int test_builtin_execution_interface(void) {
     return 1;
 }
 
-/* 主测试函数 */
-int test_builtin_main(void) {
+/* 运行内部命令测试 */
+void run_builtin_tests(void) {
     printf("=== MyShell Builtin Commands Tests ===\n\n");
     
     /* 初始化全局状态 */
@@ -659,15 +659,9 @@ int test_builtin_main(void) {
     
     if (tests_passed == tests_run) {
         printf("All builtin tests PASSED!\n");
-        return 0;
     } else {
         printf("Some builtin tests FAILED!\n");
-        return 1;
     }
 }
 
-int main(int argc, char *argv[]) {
-    (void)argc;
-    (void)argv;
-    return test_builtin_main();
-}
+/* Main function removed - using test runner instead */

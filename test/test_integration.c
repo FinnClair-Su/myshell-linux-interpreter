@@ -766,11 +766,9 @@ void run_all_integration_tests(void) {
     }
 }
 
-/* 主函数 */
-int main(void) {
+/* 运行集成测试 */
+void run_integration_tests(void) {
     printf("Starting MyShell Integration Tests...\n\n");
     
     run_all_integration_tests();
-    
-    return (tests_failed == 0) ? 0 : 1;
 }

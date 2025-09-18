@@ -474,10 +474,8 @@ void* tracked_realloc(void *ptr, size_t size, const char *context, const char *f
     
     /* 查找原始内存块 */
     memory_block_t *block = g_memory_state.allocated_blocks;
-    memory_block_t *prev = NULL;
     
     while (block && block->ptr != ptr) {
-        prev = block;
         block = block->next;
     }
     

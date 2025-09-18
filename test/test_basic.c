@@ -48,14 +48,7 @@ int test_command_parsing(void) {
     return result;
 }
 
-/* 测试内部命令识别 */
-int test_builtin_recognition(void) {
-    return (is_builtin("ls") == 1 &&
-            is_builtin("pwd") == 1 &&
-            is_builtin("cd") == 1 &&
-            is_builtin("exit") == 1 &&
-            is_builtin("nonexistent") == 0);
-}
+/* test_builtin_recognition moved to test_builtin.c */
 
 /* 测试环境变量设置和获取 */
 int test_environment_variables(void) {
@@ -88,7 +81,7 @@ int test_main(void) {
     
     /* 运行测试 */
     TEST(test_command_parsing);
-    TEST(test_builtin_recognition);
+    /* test_builtin_recognition moved to test_builtin.c */
     TEST(test_environment_variables);
     TEST(test_error_handling);
     

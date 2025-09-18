@@ -142,8 +142,14 @@ void free_command(command_t *cmd) {
 char** tokenize_input(char *input, int *token_count) {
     LOG_FUNCTION_ENTRY("tokenize_input");
     
-    CHECK_NULL_PARAM(input, "tokenize_input");
-    CHECK_NULL_PARAM(token_count, "tokenize_input");
+    if (input == NULL) {
+        handle_error(ERROR_INVALID_ARGUMENT, "tokenize_input: input is NULL");
+        return NULL;
+    }
+    if (token_count == NULL) {
+        handle_error(ERROR_INVALID_ARGUMENT, "tokenize_input: token_count is NULL");
+        return NULL;
+    }
     
     *token_count = 0;
     

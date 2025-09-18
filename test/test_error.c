@@ -4,7 +4,7 @@
 /**
  * 测试错误处理系统的基本功能
  */
-void test_basic_error_handling() {
+void test_basic_error_handling(void) {
     printf("Testing basic error handling...\n");
     
     /* 初始化错误系统 */
@@ -32,7 +32,7 @@ void test_basic_error_handling() {
 /**
  * 测试安全内存分配函数
  */
-void test_safe_memory_functions() {
+void test_safe_memory_functions(void) {
     printf("Testing safe memory functions...\n");
     
     init_error_system();
@@ -61,7 +61,7 @@ void test_safe_memory_functions() {
 /**
  * 测试错误消息获取
  */
-void test_error_messages() {
+void test_error_messages(void) {
     printf("Testing error messages...\n");
     
     /* 测试所有错误代码都有对应的消息 */
@@ -81,7 +81,7 @@ void test_error_messages() {
 /**
  * 测试日志级别
  */
-void test_log_levels() {
+void test_log_levels(void) {
     printf("Testing log levels...\n");
     
     init_error_system();
@@ -107,7 +107,7 @@ void test_log_levels() {
 /**
  * 运行所有错误处理测试
  */
-int main() {
+void run_error_tests(void) {
     printf("Running Error Handling System Tests...\n\n");
     
     test_basic_error_handling();
@@ -116,5 +116,4 @@ int main() {
     test_log_levels();
     
     printf("\nAll error handling tests passed successfully!\n");
-    return 0;
 }

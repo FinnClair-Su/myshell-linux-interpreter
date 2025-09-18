@@ -14,6 +14,9 @@ static int tests_run = 0;
 static int tests_passed = 0;
 static int tests_failed = 0;
 
+/* 前向声明 */
+static void init_parser_test_environment(void);
+
 /* 测试宏 */
 #define TEST_START(name) \
     do { \
@@ -353,6 +356,7 @@ void run_parser_tests(void) {
     /* 初始化测试环境 */
     init_memory_tracking();
     init_error_system();
+    init_parser_test_environment();
     
     /* 运行所有测试 */
     test_basic_command_parsing();
@@ -388,17 +392,11 @@ void run_parser_tests(void) {
     cleanup_memory_tracking();
 }
 
-/* 主函数 */
-int main(void) {
-    printf("Starting Command Parser Unit Tests...\n\n");
-    
+/* 初始化解析器测试环境 */
+static void init_parser_test_environment(void) {
     /* 初始化全局Shell状态 */
     g_shell_state.running = 1;
     g_shell_state.last_exit_status = 0;
     g_shell_state.env_vars = NULL;
     g_shell_state.current_dir = NULL;
-    
-    run_parser_tests();
-    
-    return (tests_failed == 0) ? 0 : 1;
 }

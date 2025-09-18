@@ -44,8 +44,11 @@ char* find_executable(char *command) {
         return NULL;
     }
     
-    char *full_path = malloc(MAX_PATH_SIZE);
-    HANDLE_MALLOC_ERROR(full_path, return NULL);
+    char *full_path = TRACKED_MALLOC(MAX_PATH_SIZE, "find_executable: full_path");
+    if (full_path == NULL) {
+        free_path_dirs(path_dirs);
+        return NULL;
+    }
     
     for (int i = 0; path_dirs[i] != NULL; i++) {
         snprintf(full_path, MAX_PATH_SIZE, "%s/%s", path_dirs[i], command);

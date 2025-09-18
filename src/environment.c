@@ -183,11 +183,11 @@ char* expand_variables(char *input) {
                 /* 如果没有有效的变量名，保留原始的 $ */
                 if (result_pos + 1 >= result_size) {
                     result_size *= 2;
-                    char *new_result = realloc(result, result_size);
-                    HANDLE_MALLOC_ERROR(new_result, {
-                        free(result);
+                    char *new_result = TRACKED_REALLOC(result, result_size, "expand_variables: expand for dollar");
+                    if (new_result == NULL) {
+                        TRACKED_FREE(result);
                         return NULL;
-                    });
+                    }
                     result = new_result;
                 }
                 result[result_pos++] = '$';
